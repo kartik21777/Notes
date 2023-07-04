@@ -30,6 +30,9 @@ In Flexbox, however, the width property is implemented differently. It's more of
 Here's the deal: In addition to the hypothetical size, there's another important size that the Flexbox algorithm cares about: the minimum size.The Flexbox algorithm refuses to shrink a child below its minimum size. The content will overflow rather than shrink further, no matter how high we crank flex-shrink!Text inputs have a default minimum size of 170px-200px (it varies between browsers). That's the limitation we're running into above.
 flex-wrap: wrap gives us two rows of stuff.
 Within each row, align-items lets us slide each individual child up or down
+To make a a box or an image rounded at its corners use border-radius or css rounded corners.
+If you want to use an image as in the Website project don’t try to put the image inside the border but use as it is.
+
 Zooming out, however, we have these two rows within a single Flex context! The cross axis will now intersect two rows, not one. And so, we can't move the rows individually, we need to distribute them as a group.
 Using our definitions from above, we're dealing with content, not items. But we're also still talking about the cross axis! And so the property we want is align-content.
 flex-direction: row | row-reverse | column | column-reverse;
