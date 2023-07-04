@@ -1,0 +1,36 @@
+box-sizing:border-box;
+dispaly:inline-block;(height and width respected but doesn't break into new line)
+margin can be negative not padding
+height and width respected in outer display type(breaks into new line) not in inner display type(not breaks into new line), 
+display : flex
+flex : initial- 0 1 atuo
+flex : auto- 1 1 auto- This would mean that the longer item would have more space because it started from a larger size, even though the same amount of available space is assigned to it as the others.
+flex : none- 0 0 auto
+flex : positive no- positive no positive no 0
+That first value is flex-grow and it’s set to 0 because, by default, we don’t want our elements to expand at all (most of the time). Instead, we want every element to be dependent on the size of the content within it.
+flex: 1 1 auto;- Then all the elements will take an equal portion of the .parent element, but only if the lengths of their contents are the same.
+auto is saying that the ideal size of our element is defined by its content. To make all the elements take up the full space of the parent we can set the child elements to width: 100%, or we can set the flex-basis to 100%, or we can set flex-grow to 1.
+justify-content aligns items across the main axis.
+flex: 0 1 1000px;- What we’re telling the browser here is to set the flex-basis to 1000px or, “please, please, please just try and take up 1000px of space.” If that’s not possible, then the element will take up that much space proportionally to the other elements.
+justify-content: space-between;
+flex-wrap: wrap; This is because, by default, flex items will try to fit into one line but flex-wrap: wrap will ignore that entirely. Now, if those flex items can’t fit in the same space, they’ll break onto a new line.
+Try to use the flex shorthand
+Remember max, min and ideal size when doing so
+Remember that the content of an element can impact how these values work together, too.
+flex-direction: column;
+you need to think of your flex-containers as having 2 axes: the main axis and the cross axis.
+flex-direction: row puts the main axis horizontal (left-to-right), and column puts the main axis vertical (top-to-bottom).
+The reason for this is that the flex shorthand expands flex-basis to 0, which means that all flex-growing and flex-shrinking would begin their calculations from 0.Empty divs by default have 0 height, so for our flex items to fill up the height of their container, they don’t actually need to have any height at all.
+To change the placement of items along the cross axis use align-items
+flex-start flex-end center space-around space-between space-evenly
+align-self: flex-start, targets only a single item
+Setting gap on a flex container simply adds a specified space between flex items, very similar to adding a margin to the items themselves. 
+This is the fundamental difference between the primary/cross axis. When we're talking about alignment in the cross axis, each item can do whatever it wants. In the primary axis, though, we can only think about how to distribute the group. That's why there's no justify-self. 
+In Flexbox, however, the width property is implemented differently. It's more of a suggestion than a hard constraint.The specification has a name for this: the hypothetical size. It's the size an element would be, in a perfect utopian world, with nothing getting in the way.
+Here's the deal: In addition to the hypothetical size, there's another important size that the Flexbox algorithm cares about: the minimum size.The Flexbox algorithm refuses to shrink a child below its minimum size. The content will overflow rather than shrink further, no matter how high we crank flex-shrink!Text inputs have a default minimum size of 170px-200px (it varies between browsers). That's the limitation we're running into above.
+flex-wrap: wrap gives us two rows of stuff.
+Within each row, align-items lets us slide each individual child up or down
+Zooming out, however, we have these two rows within a single Flex context! The cross axis will now intersect two rows, not one. And so, we can't move the rows individually, we need to distribute them as a group.
+Using our definitions from above, we're dealing with content, not items. But we're also still talking about the cross axis! And so the property we want is align-content.
+flex-direction: row | row-reverse | column | column-reverse;
+flex-flow: column wrap;-This is a shorthand for the flex-direction and flex-wrap properties, which together define the flex container’s main and cross axes. The default value is row nowrap.
