@@ -1,5 +1,9 @@
+button typer = "button" always write typer to tell browser what type of button is it
+style="text-decoration:none" to remove the underline from the links
+list-style-type to remove the bullets from ul
 box-sizing:border-box;
 dispaly:inline-block;(height and width respected but doesn't break into new line)
+display: block; - Displaying the links as block elements makes the whole link area clickable (not just the text), and it allows us to specify the width (and padding, margin, height, etc. if you want)
 margin can be negative not padding
 height and width respected in outer display type(breaks into new line) not in inner display type(not breaks into new line), 
 display : flex
@@ -37,3 +41,5 @@ Zooming out, however, we have these two rows within a single Flex context! The c
 Using our definitions from above, we're dealing with content, not items. But we're also still talking about the cross axis! And so the property we want is align-content.
 flex-direction: row | row-reverse | column | column-reverse;
 flex-flow: column wrap;-This is a shorthand for the flex-direction and flex-wrap properties, which together define the flex container’s main and cross axes. The default value is row nowrap.
+default orientation of a flex container is row
+to center a text you can use text-align:center
