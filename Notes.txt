@@ -43,3 +43,5 @@ flex-direction: row | row-reverse | column | column-reverse;
 flex-flow: column wrap;-This is a shorthand for the flex-direction and flex-wrap properties, which together define the flex container’s main and cross axes. The default value is row nowrap.
 default orientation of a flex container is row
 to center a text you can use text-align:center
+Exponents first then multiplication and division second (are on the same level) then addition and minus (are on the same level).
+if same level then left to right execute
