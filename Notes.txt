@@ -43,5 +43,218 @@ flex-direction: row | row-reverse | column | column-reverse;
 flex-flow: column wrap;-This is a shorthand for the flex-direction and flex-wrap properties, which together define the flex container’s main and cross axes. The default value is row nowrap.
 default orientation of a flex container is row
 to center a text you can use text-align:center
-Exponents first then multiplication and division second (are on the same level) then addition and minus (are on the same level).
-if same level then left to right execute
+The name must contain only letters, digits, or the symbols $ and _. The first character must not be a digit. This is for JavaScript.
+Strings are immutable: Strings cannot be changed, only replaced.
+When the name contains multiple words, camelCase is commonly used. That is: words go one after another, each word except first starting with a capital letter: myVeryLongName.
+There is a widespread practice to use constants as aliases for difficult-to-remember values that are known prior to execution.Such constants are named using capital letters and underscores.const COLOR_RED = "#F00";
+capital-named constants are only used as aliases for “hard-coded” values.
+JavaScript is a 64 bit language so this format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63.
+Integers (numbers without a period or exponent notation) are accurate up to 15 digits. The maximum number of decimals is 17.
+Floating point arithmetic is not always 100% accurat, to solve this use multiplication and division.
+However, if the string is numeric, the result will be a number, example - let a = 100/"10"; will give 10
+You can use the global JavaScript function isNaN() to find out if a value is a not a number: let x = 100 / "Apple"; isNaN(x); output is true.
+Watch out for NaN. If you use NaN in a mathematical operation, the result will also be NaN. It can be concatenated if with a string.
+NaN is a number: typeof NaN returns number.
+Infinity is the value JavaScript will return if you calculate a number outside the largest possible number. typeof Infinity returns number. division by 0 also return infinity.
+Never write a number with leading zero like this 07 as some versions of JavaScript interepret it as octal.
+By default, JavaScript displays numbers as base 10 decimals.But you can use the toString() method to output numbers from base 2 to base 36. example - let myNumber = 32;myNumber.toString(32); myNumber.toString(16); myNumber.toString(12); Output - w, 10, 20
+You can create objects with the keyword new, let y = new Number(123); Do not create Number objects. The new keyword complicates the code and slows down execution speed. Number Objects can produce unexpected results:
+let x = 500; let y = new Number(500); if x==y then true, if x===y false
+Comparing two JavaScript objects always returns false. ex - let x = new Number(500); let y = new Number(500); x==y and x===y both are false.
+Doubles are a specific type of floating point number that have greater precision than standard floating point numbers (meaning that they are accurate to a greater number of decimal places).
+For example, to round your number to a fixed number of decimal places, use the toFixed() method. 
+let myNumber = "74"; myNumber = Number(myNumber) + 3; Output will be 77
+exponent symbol is **
+You may see some people using === and !== in their tests for equality and non-equality. These are valid operators in JavaScript, but they differ from ===/!=. The latter versions test whether the values are the same but not whether the values' datatypes are the same. The former, strict versions test the equality of both the values and their datatypes(check without type conversions). The strict versions tend to result in fewer errors, so we recommend you use them. ex - "0" == false //true while "0" === false //false
+let apples = "2"; let oranges = "3"; alert( +apples + +oranges ); // 5 due to unary plus but if alert(apples + oranges)// 23 as no unary plus so concantenation.
+Operator Precedence- unary plus, unary negation, exponenet, multiplication, division, addition, negation
+We can change assignments let a = 1; let b = 2; let c = 3 - (a = b + 1); alert( a ); // 3; alert( c ); // 0
+Increment/decrement can only be applied to variables. Trying to use it on a value like 5++ will give an error. ex ++apple is all right, provided apple has a value.
+true value is 1 and false is 0, also "" value is 0;
+null + 1= null and infinity + 1 = NaN;
+let message = "hello"; message = 123456; // no error, Programming languages that allow such things, such as JavaScript, are called “dynamically typed”, meaning that there exist data types, but variables are not bound to any of them.
+NaN ** 0 is 1
+There are two main differences of var compared to let/const: var variables have no block scope, their visibility is scoped to current function, or global, if declared outside function. var declarations are processed at function start (script start for globals). People also call such behavior “hoisting” (raising), because all var are “hoisted” (raised) to the top of the function.
+Declarations are hoisted, but assignments are not.
+In JavaScript number types have a safe integer range of ±(2^(53)-1), beyond this range  there’ll be a precision error, because not all digits fit into the fixed 64-bit storage. So an “approximate” value may be stored.
+BigInt type was recently added to the language to represent integers of arbitrary length. A BigInt value is created by appending n to the end of an integer: let BigInt = 90001291921021010921n;
+symbol for unique identifiers.
+The typeof operator allows us to see which type is stored in a variable. Usually used as typeof x, but typeof(x) is also possible. 
+For null returns "object" – this is an error in the language, it’s not actually an object.
+In JavaScript there are three types of quotes-1. Double quotes: "Hello". 2. Single quotes: 'Hello'. 3. Backticks: `Hello`. Double and single quotes are “simple” quotes. There’s practically no difference between them in JavaScript. Backticks are “extended functionality” quotes. 
+Any text without quotes around it is assumed to be a variable name, property name, a reserved word, or similar.
+Strings declared using backticks are a special kind of string called a template literal. In most ways, template literals are like normal strings, but they have some special properties:
+you can embed JavaScript in them
+you can declare template literals over multiple lines
+const name = "Chris"; const greeting = `Hello, ${name}`; console.log(greeting); // "Hello, Chris"
+const one = "Hello, "; const two = "how are you?"; const joined = `${one}${two}`; console.log(joined); // "Hello, how are you?"
+You can concantenate normal strings with a press sign.
+Template literals respect the line breaks in the source code, so you can write strings that span multiple lines like this:
+const newline = `One day you finally knew
+what you had to do, and began,`;
+console.log(newline); /*
+One day you finally knew
+what you had to do, and began,
+*/
+To have the equivalent output using a normal string you'd have to include line break characters (\n) in the string:
+const newline = "One day you finally knew\nwhat you had to do, and began,";
+console.log(newline); /*
+One day you finally knew
+what you had to do, and began,
+*/
+Since we use quotes to indicate the start and end of strings, how can we include actual quotes in strings? const badQuotes = "She said "I think so!""; is wrong. There are two options:
+First option- const goodQuotes1 = 'She said "I think so!"'; 
+const goodQuotes2 = `She said "I'm not going in there!"`;
+Another option is to escape the problem quotation mark. Escaping characters means that we do something to them to make sure they are recognized as text, not part of the code. In JavaScript, we do this by putting a backslash just before the character.
+const bigmouth = 'I\'ve got no right to take my place…'; 
+console.log(bigmouth);
+The Number() function converts anything passed to it into a number, if it can. Try the following: 
+const myString = "123";
+const myNum = Number(myString);
+console.log(typeof myNum);
+// number i.e. output is 123
+Conversely, the String() function converts its argument to a string. Try this:
+const myNum2 = 123;
+const myString2 = String(myNum2);
+console.log(typeof myString2);
+// string i.e. output is "123"
+These constructs can be really useful in some situations. For example, if a user enters a number into a form's text field, it's a string. However, if you want to add this number to something, you'll need it to be a number, so you could pass it through Number() to handle this. 
+A string is converted to upper case with .toUpperCase():
+A string is converted to lower case with .toLowerCase():
+The .length() returns the length of a string.
+There are 3 methods for extracting a part of a string:
+slice(start, end)
+substring(start, end)
+substr(start, length)
+slice() extracts a part of a string and returns the extracted part in a new string. The method takes 2 parameters: start position, and end position (end not included).
+JavaScript counts positions from zero.
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7, 13);// Banana, it will count the alphabet on 7 and 12 not on 13
+If no end position ex text.slice(7) then output will be Banana, Kiwi i.e. till the end of the string will be counted
+If a parameter is negative, the position is counted from the end of the string. ex text.slice(-12) // output- Banana, Kiwi as Kiwi will be the start of the sentnece and 12 will be the end position(from right to left)
+If text.slice(-12,-6) then same as regular but just from right to left, //Output - Banana
+Another way to handele negative parameters is index number = length of string - -ve no, ex:
+let a = "Hello"; if a.slic(-2, 4) then start position = 5-2 = 3, i.e. it becomes a.slice(3,4), same for end index position if negaitive,
+.substring is same as .slice(), the difference is if start index/end index === NaN/  start index/end index < 0 then index becomes 0 as compared to .slice() where if index === NaN then it becomes 0 else you know. 
+If .substring() start index> end index it swaps them whereas for .slice() it will give empty string
+
+The two parameters of substr() are start and length, while for substring(), they are start and end.
+substr()'s start index will wrap to the end of the string if it is negative, while substring() will clamp it to 0.
+Negative lengths in substr() are treated as zero, while substring() will swap the two indexes if end is less than start.
+
+.replace() method replaces a specified value with another value in a string. The replace() method does not change the string it is called on. The replace() method returns a new string. The replace() method replaces only the first match.
+let text = "Please visit Microsoft!";
+let newText = text.replace("Microsoft", "W3Schools");// Please visit W3Schools!
+If text = "Please visit Microsoft and Microsoft!" then // "Please visit W3Schools and Microsoft!"
+By default, the replace() method is case sensitive. Writing MICROSOFT (with upper-case) will not work:
+To replace case insensitive, use a regular expression with an /i flag (insensitive):
+let newText = text.replace(/MICROSOFT/i, "W3Schools");// Please visit W3Schools! if "MICROSOFT" then Please visit Microsoft!
+To replace all matches, use a regular expression with a /g flag (global match):
+let text = "Please visit Microsoft and Microsoft!";
+let newText = text.replace(/Microsoft/g, "W3Schools"); // Please visit Microsoft and Microsoft!
+
+.concat() joins two or more strings:
+ext = "Hello".concat(" ", "World!"); // Hello World! same as text = "Hello" + " " + "World!";
+.trim() method removes whitespace from both sides of a string. .trimEnd() from the end of the string and .trimStart from the st
+The padStart() method pads a string from the start.
+
+It pads a string with another string (multiple times) until it reaches a given length.
+The padStart() method is a string method.
+To pad a number, convert the number to a string first.
+padEnd() is same as padStart() it will just do it from the end. If length<lenght of string to be padded then both witll return the original string. if padstart(5) then it will reach lenght 5 by adding space, if there was another string then it would have add string insted of spaces.
+There are 3 methods for extracting string characters:
+charAt(position)
+charCodeAt(position)
+Property access [ ]
+.charAt() method returns the character at a specified index (position) in a string.
+.charCodeAt() method returns the unicode of the character at a specified index in a string. ex H will be 71
+Property access might be a little unpredictable:
+let char = text[0]; // H
+It makes strings look like arrays (but they are not)
+If no character is found, [ ] returns undefined, while charAt() returns an empty string.
+It is read only. str[0] = "A" gives no error (but does not work!)
+let text = "HELLO WORLD";
+text[0] = "A";// is still HELLO WORLD
+string can be converted to an array with the split() method.
+text.split(",")    // Split on commas
+text.split(" ")    // Split on spaces
+text.split("|")    // Split on pipe
+If the separator is omitted, the returned array will contain the whole string in index [0].
+If the separator is "", the returned array will be an array of single characters:
+text.split("") // H,E,L,L,O, ,W,O,R,L,D
+A comparison result can be assigned to a variable, just like any value:
+let result = 5 > 4; // assign the result of the comparison
+alert( result ); // true
+The algorithm to compare two strings is simple:
+Compare the first character of both strings.
+If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second. We’re done.
+Otherwise, if both strings’ first characters are the same, compare the second characters the same way.
+Repeat until the end of either string.
+If both strings end at the same length, then they are equal. Otherwise, the longer string is greater.
+The comparison algorithm given above is roughly equivalent to the one used in dictionaries or phone books, but it’s not exactly the same.
+For instance, case matters. A capital letter "A" is not equal to the lowercase "a". Which one is greater? The lowercase "a". Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode). 
+alert( '01' == 1 ); // true, string '01' becomes a number 1
+For boolean values, true becomes 1 and false becomes 0.
+let a = 0; alert( Boolean(a) );
+alert( null === undefined ); // false
+There’s a special rule. These two are a “sweet couple”: they equal each other (in the sense of ==), but not any other value.alert( null == undefined ); // true
+For maths and other comparisons < > <= >=, null/undefined are converted to numbers: null becomes 0, while undefined becomes NaN.
+Treat any comparison with undefined/null except the strict equality === with exceptional care.
+Don’t use comparisons >= > < <= with a variable which may be null/undefined, unless you’re really sure of what you’re doing. If a variable can have these values, check for them separately.
+if, if else, else if - synatax same as JavaScript
+There are four logical operators in JavaScript: || (OR), && (AND), ! (NOT), ?? (Nullish Coalescing). Although they are called “logical”, they can be applied to values of any type, not only boolean. Their result can also be of any type.
+let str = prompt("Hello", "") // This will show a prompt of Hello and store the input in str
+||(OR)- the result is always true except for the case when both operands are false.
+The OR || operator does the following:
+Evaluates operands from left to right.
+For each operand, converts it to boolean. If the result is true, stops and returns the original value of that operand.
+If all operands have been evaluated (i.e. all were false), returns the last operand.
+A value is returned in its original form, without the conversion.
+No notes
+In other words, a chain of OR || returns the first truthy value or the last one if no truthy value is found.
+alert( 1 || 0 ); // 1 (1 is truthy)
+Np notes
+alert( null || 1 ); // 1 (1 is the first truthy value)
+alert( null || 0 || 1 ); // 1 (the first truthy value)
+No notes
+alert( undefined || null || 0 ); // 0 (all falsy, returns the last value)
+Another feature of OR || operator is the so-called “short-circuit” evaluation. It means that || processes its arguments until the first truthy value is reached, and then the value is returned immediately, without even touching the other argument.
+No notes
+true || alert("not printed");
+false || alert("printed");
+In the first line, the OR || operator stops the evaluation immediately upon seeing true, so the alert isn’t run.
+&&(AND)- , AND returns true if both operands are truthy and false
+The AND && operator does the following:
+No notes
+Evaluates operands from left to right.
+For each operand, converts it to a boolean. If the result is false, stops and returns the original value of that operand.
+If all operands have been evaluated (i.e. all were truthy), returns the last operand.
+In other words, AND returns the first falsy value or the last value if none were found.
+No notes
+The rules above are similar to OR. The difference is that AND returns the first falsy value while OR returns the first truthy one.
+alert( 1 && 0 ); // 0
+alert( 1 && 5 ); // 5
+No notes
+// if the first operand is falsy,
+// AND returns it. The second operand is ignored
+alert( null && 5 ); // null
+alert( 0 && "no matter what" ); // 
+The precedence of AND && operator is higher than OR ||. So the code a && b || c && d is essentially the same as if the && expressions were in parentheses: (a && b) || (c && d).
+!(NOT)- The boolean NOT operator is represented with an exclamation sign !.
+The operator accepts a single argument and does the following:
+Converts the operand to boolean type: true/false.
+Returns the inverse value.
+A double NOT !! is sometimes used for converting a value to boolean type:
+alert( !!"non-empty string" ); // true
+alert( !!null ); // false
+That is, the first NOT converts the value to boolean and returns the inverse, and the second NOT inverses it again. 
+There’s a little more verbose way to do the same thing – a built-in Boolean function:
+alert( Boolean("non-empty string") ); // true
+alert( Boolean(null) ); // false
+The precedence of NOT ! is the highest of all logical operators, so it always executes first, before && or ||.
+Any value that is not false, undefined, null, 0, NaN, or an empty string ('') actually returns true when tested as a conditional statement, so they are called “truthy”. The fomer ones are called falsy values.
+ternary operator pseudocode- condition ? run this code : run this code instead
+Use "selct and label for" to select multiple options in html
+
+
+
